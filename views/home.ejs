@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+    <h1>ToDo App</h1>
+
+    <hr>
+
+    <form action="/add-task" method="POST">
+        <input type="text" name="description" required placeholder="What do you need to do?" autocomplete="off">
+        <select name="category">
+            <option value="">Choose a category</option>
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="school">School</option>
+            <option value="personal">Cleaning</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="date" name="duedate">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        <% for(let i of todo_tasks) { %>
+        <li>
+            <p> <%= i.description %> </p>
+            <p> <%= i.category %> </p>
+            <p> <%= i.duedate %> </p>
+        </li>
+        <% } %>
+    </ul>
+</body>
+
+</html>
