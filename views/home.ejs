@@ -29,12 +29,14 @@
     <ul>
         <% for(let i of todo_tasks) { %>
         <li>
-            <p> <%= i.description %> </p>
-            <p> <%= i.category %> </p>
-            <p> <%= i.duedate %> </p>
+            <input type="checkbox" value="<% i._id %>">
+            <%= i.description %>
+            <%= i.category %>
+            <%= i.duedate %>
         </li>
         <% } %>
     </ul>
+
 </body>
 
 </html>
