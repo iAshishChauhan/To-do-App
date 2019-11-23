@@ -25,18 +25,19 @@
         <input type="date" name="duedate">
         <button type="submit">Add Task</button>
     </form>
-
+    
     <ul>
         <% for(let i of todo_tasks) { %>
         <li>
-            <input type="checkbox" value="<% i._id %>">
+            <input type="checkbox" value="<%= i._id %>" id="task-id">
             <%= i.description %>
             <%= i.category %>
             <%= i.duedate %>
+            <a href="/delete-task/?id=<%= i._id %>">Delete Task</a>
         </li>
         <% } %>
     </ul>
-
+    <script src="/js/home.js"></script>
 </body>
 
 </html>
