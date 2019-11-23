@@ -3,19 +3,14 @@
 function sendId() {
     let checkboxes = document.getElementsByName('selectedbox');
     // console.log(id);
-    let temp="";
-    let first = true;
+    let temp="id=";
     for (var i=0; i<checkboxes.length; i++) {
         // And stick the checked ones onto an array...
         if (checkboxes[i].checked) {
-            if(first){
-                temp = "id="+checkboxes[i].value;
-                first = false;
-            }else{
-                temp += "&id="+checkboxes[i].value;
-            }
+            // temp += "&id="+checkboxes[i].value;
+            temp += checkboxes[i].value+"&id=";
+             
         }
     }
-    console.log(temp);
     window.location.href = "/delete-task/?"+temp;
 }
