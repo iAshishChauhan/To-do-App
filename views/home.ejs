@@ -12,32 +12,35 @@
 
     <hr>
 
-    <form action="/add-task" method="POST">
-        <input type="text" name="description" required placeholder="What do you need to do?" autocomplete="off">
-        <select name="category">
-            <option value="">Choose a category</option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="school">School</option>
-            <option value="personal">Cleaning</option>
-            <option value="other">Other</option>
-        </select>
-        <input type="date" name="duedate">
-        <button type="submit">Add Task</button>
-    </form>
+    <div class="task-form">
+        <form action="/add-task" method="POST">
+            <input type="text" name="description" required placeholder="What do you need to do?" autocomplete="off">
+            <select name="category">
+                <option value="">Choose a category</option>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="school">School</option>
+                <option value="cleaning">Cleaning</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="date" name="duedate">
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
 
     <button onclick="sendId()">Delete Contact</button>
-    
+
     <ul>
         <% for(let i of todo_tasks) { %>
         <li>
-            <input type="checkbox" value="<%= i._id %>" id="task-id">
+            <input name="selectedbox" type="checkbox" value="<%= i._id %>">
             <%= i.description %>
             <%= i.category %>
             <%= i.duedate %>
         </li>
         <% } %>
     </ul>
+    
     <script src="/js/home.js"></script>
 </body>
 
