@@ -1,7 +1,6 @@
 // console.log('It works');
 
 function sendId() {
-    var id = document.getElementById('task-id');
-    console.log(id);
-    return false;
+    let id = document.getElementById('task-id').value;
+    window.location.href = `delete-task/?=${id}`;
 }

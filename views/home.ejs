@@ -25,7 +25,7 @@
         <input type="date" name="duedate">
         <button type="submit">Add Task</button>
     </form>
-    
+    <a onclick="sendId()">Delete Task</a>
     <ul>
         <% for(let i of todo_tasks) { %>
         <li>
@@ -33,10 +33,10 @@
             <%= i.description %>
             <%= i.category %>
             <%= i.duedate %>
-            <a href="/delete-task/?id=<%= i._id %>">Delete Task</a>
         </li>
         <% } %>
     </ul>
+
     <script src="/js/home.js"></script>
 </body>
 
