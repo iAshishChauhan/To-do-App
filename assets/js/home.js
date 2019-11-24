@@ -2,7 +2,6 @@
 
 function sendId() {
     let checkboxes = document.getElementsByName('selectedbox');
-    // console.log(id);
     let temp="id=";
     for (var i=0; i<checkboxes.length; i++) {
         // And stick the checked ones onto an array...
