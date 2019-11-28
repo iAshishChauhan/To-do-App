@@ -1,46 +1,93 @@
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <title>
-        <%= title %>
-    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/ab1a7884ee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/home.css">
+    <title> <%= title %> </title>
 </head>
 
 <body>
-    <h1>ToDo App</h1>
+    <div class="card" style="width: 600px;">
+        <h1>ToDo App</h1>
 
-    <hr>
+        <hr>
+        <div class="container">
+            <div class="form-group">
+                <form action="/add-task" method="POST">
 
-    <div class="task-form">
-        <form action="/add-task" method="POST">
-            <input type="text" name="description" required placeholder="What do you need to do?" autocomplete="off">
-            <select name="category">
-                <option value="">Choose a category</option>
-                <option value="personal">Personal</option>
-                <option value="work">Work</option>
-                <option value="school">School</option>
-                <option value="cleaning">Cleaning</option>
-                <option value="other">Other</option>
-            </select>
-            <input type="date" name="duedate">
-            <button type="submit">Add Task</button>
-        </form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+                        </div>
+                        <input type="text" name="description" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" placeholder="What you want to do?" required autocomplete="off">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <select name="category" class="select-css">
+                            <option value="">Choose a category</option>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="school">School</option>
+                            <option value="cleaning">Cleaning</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <label for="dateofbirth">Date Of Birth</label>
+                    <input type="date" name="duedate" id="dateofbirth" class="date-class">
+
+                    <hr>
+
+                    <div class="row justify-content-around buttons">
+                        <button type="submit" class="btn btn-success button1">Add Task</button>
+                        <button onclick="sendId()" class="btn btn-danger button2">Delete Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="container">
+            <ul class="list-group">
+                <% for(let i of todo_tasks) { %>
+                <li class="list-group-item">
+                    <div class="task-info">
+                        <div class="description-view">
+                            <input name="selectedbox" type="checkbox" value="<%= i._id %>" class="cbox">
+                            <label for="cbox"><%= i.description %></label>
+                        </div>
+                        <div class="category-view">
+                            <%= i.category %>
+                        </div>
+                    </div>
+                    <div class="date-view">
+                        <i class="far fa-calendar-alt"></i>
+                        <%= i.duedate %>    
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+        </div>
     </div>
 
-    <button onclick="sendId()">Delete Contact</button>
-
-    <ul>
-        <% for(let i of todo_tasks) { %>
-        <li>
-            <input name="selectedbox" type="checkbox" value="<%= i._id %>">
-            <%= i.description %>
-            <%= i.category %>
-            <%= i.duedate %>
-        </li>
-        <% } %>
-    </ul>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
     <script src="/js/home.js"></script>
 </body>
 

@@ -1,4 +1,3 @@
-// console.log('It works');
 
 function sendId() {
     let checkboxes = document.getElementsByName('selectedbox');
