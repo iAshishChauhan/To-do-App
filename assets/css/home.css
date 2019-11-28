@@ -108,6 +108,7 @@ input[type=checkbox]:checked + label {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  text-transform: capitalize;
 }
 
 .description-view label{
@@ -117,6 +118,6 @@ input[type=checkbox]:checked + label {
 .date-view {
   padding: 0;
   margin: 0;
-margin-left: 35px;
+  margin-left: 35px;
   font-size: 0.8em;
 }
